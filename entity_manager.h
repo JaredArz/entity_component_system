@@ -1,8 +1,14 @@
 #include "ecs.h"
 #include <queue>
+#include <cassert>
 #include <array>
 #define assert_in_range(object, max) assert( object < max && "Invalid entity, out of range.")
 #define assert_is_space(count, max)  assert( count  < max && "Too many entities in existence.")
+
+
+
+//extern const uint32_t ecs::MAX_ENTITIES;
+//extern const uint8_t  ecs::MAX_COMPONENTS;
 
 namespace e_mgr{
 class entity_manager{
@@ -50,6 +56,7 @@ class entity_manager{
         }
 
     private:
+
         // Queue of unused entity IDs
         std::queue<ecs::entity_t> available_entities{};
         
