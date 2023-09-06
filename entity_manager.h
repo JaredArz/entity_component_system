@@ -5,8 +5,6 @@
 #define assert_in_range(object, max) assert( object < max && "Invalid entity, out of range.")
 #define assert_is_space(count, max)  assert( count  < max && "Too many entities in existence.")
 
-
-
 //extern const uint32_t ecs::MAX_ENTITIES;
 //extern const uint8_t  ecs::MAX_COMPONENTS;
 

@@ -15,14 +15,14 @@ int main(void){
     e_mgr::entity_manager mgr;
     mgr   = e_mgr::entity_manager();
 
-    //ecs::signature_t sa = 0x11;
+    ecs::signature_t sa = 0x11;
     ea = mgr.create_entity();
-    //mgr.set_signature(ea,sa);
+    mgr.set_signature(ea,sa);
     eb = mgr.create_entity();
     ec = mgr.create_entity();
 
-    //c_array::iface_component_array<trans_t> ic;
-    //ic = c_array::iface_component_array();
+    c_array::iface_component_array<trans_t> ic;
+    ic = c_array::iface_component_array();
 
 
     printf("Id of entity a: %d\n", ea);
