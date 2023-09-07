@@ -2,13 +2,9 @@
 #include <queue>
 #include <cassert>
 #include <array>
-#define assert_in_range(object, max) assert( object < max && "Invalid entity, out of range.")
-#define assert_is_space(count, max)  assert( count  < max && "Too many entities in existence.")
-
-//extern const uint32_t ecs::MAX_ENTITIES;
-//extern const uint8_t  ecs::MAX_COMPONENTS;
 
 namespace e_mgr{
+
 class entity_manager{
     public:
         entity_manager(){
@@ -20,7 +16,7 @@ class entity_manager{
         }
 
         ecs::entity_t create_entity(){
-            assert_is_space(living_entity_count, ecs::MAX_ENTITIES);
+            assert( living_entity_count < ecs::MAX_ENTITIES && "Too many entities in existence.");
 
             // Take an ID from the front of queue
             ecs::entity_t id = available_entities.front();
@@ -31,7 +27,7 @@ class entity_manager{
         }
 
         void destroy_entity(ecs::entity_t entity){
-            assert_in_range(entity, ecs::MAX_ENTITIES);
+            assert( entity < ecs::MAX_ENTITIES && "Invalid entity, out of range.");
 
             // Invalidate the destroyed entity's signature
             e_signatures[entity].reset();
@@ -42,13 +38,13 @@ class entity_manager{
         }
 
         void set_signature(ecs::entity_t entity, ecs::signature_t signature){
-            assert_in_range(entity, ecs::MAX_ENTITIES);
+            assert( entity < ecs::MAX_ENTITIES && "Invalid entity, out of range.");
 
             e_signatures[entity] = signature;
         }
 
         ecs::signature_t get_signature(ecs::entity_t entity){
-            assert_in_range(entity, ecs::MAX_ENTITIES);
+            assert( entity < ecs::MAX_ENTITIES && "Invalid entity, out of range.");
 
             return e_signatures[entity];
         }

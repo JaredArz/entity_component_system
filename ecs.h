@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 #include <bitset>
 
 namespace ecs{
@@ -15,4 +15,19 @@ const uint8_t  MAX_COMPONENTS = 32;
 // NOTE: May be able to optimize by not introducing this class
 // Entities are given a bitfield signature contating all their component types
 using signature_t = std::bitset<MAX_COMPONENTS>;
+
+// Input
+enum class InputButtons
+{
+	W,
+	A,
+	S,
+	D,
+	Q,
+	E
+};
+
+// Events
+using EventId = std::uint32_t;
+using ParamId = std::uint32_t;
 }
